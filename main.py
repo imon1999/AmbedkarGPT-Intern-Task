@@ -90,3 +90,22 @@ Question:
 
 Answer in concise English.
 """
+    prompt = ChatPromptTemplate.from_template(template)
+
+    llm = ChatOllama(
+        model=OLLAMA_MODEL_NAME,
+        temperature=0.1,
+    )
+
+    # RAG pipeline
+    rag_chain = (
+        RunnableParallel(
+            context=retriever,
+            question=RunnablePassthrough()
+        )
+        | (lambda x: {"context": format_docs(x["context"]), "question": x["question"]})
+        | prompt
+        | llm
+    )
+
+    return rag_chain
