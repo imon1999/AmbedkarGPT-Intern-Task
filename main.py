@@ -132,3 +132,17 @@ def interactive_cli(rag_chain):
 
         answer = rag_chain.invoke(q)
         print("\nAmbedkarGPT:", answer.content, "\n")
+
+# Self-test with questions 
+def run_self_test(rag_chain):
+  
+    sample_questions = [
+        "What is the central theme of this speech?",
+        "What does Ambedkar say about caste?",
+    ]
+
+    print("\n Self-test: 5 sample questions ---\n")
+    for i, q in enumerate(sample_questions, start=1):
+        print(f"Q{i}: {q}")
+        ans = rag_chain.invoke(q)
+        print(f"A{i}: {ans.content}\n")
