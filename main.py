@@ -45,3 +45,20 @@ def build_vectorstore(chunks):
     embeddings = HuggingFaceEmbeddings(
         model_name=EMBEDDING_MODEL_NAME
     )
+
+    if os.listdir(CHROMA_DIR):
+        vectorstore = Chroma(
+            collection_name="ambedkar_speech",
+            persist_directory=CHROMA_DIR,
+            embedding_function=embeddings
+        )
+    else:
+        vectorstore = Chroma.from_documents(
+            documents=chunks,
+            embedding=embeddings,
+            collection_name="ambedkar_speech",
+            persist_directory=CHROMA_DIR,
+        )
+        vectorstore.persist()
+
+    return vectorstore
