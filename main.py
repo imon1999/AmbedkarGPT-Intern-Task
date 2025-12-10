@@ -109,3 +109,9 @@ Answer in concise English.
     )
 
     return rag_chain
+
+def format_docs(docs) -> str:
+    """
+    Join retrieved document chunks into a single context string.
+    """
+    return "\n\n".join(d.page_content for d in docs)
