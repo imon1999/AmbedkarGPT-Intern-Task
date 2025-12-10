@@ -62,3 +62,16 @@ def build_vectorstore(chunks):
         vectorstore.persist()
 
     return vectorstore
+# LLM and RAG chain
+
+def build_rag_chain(vectorstore):
+    """
+    Build a Retrieval-Augmented Generation chain that:
+    - Retrieves relevant chunks from Chroma.
+    - Asks Ollama Mistral to answer *only* from those chunks.
+    """
+
+    retriever = vectorstore.as_retriever(
+        search_type="similarity",
+        search_kwargs={"k": 4},
+    )
