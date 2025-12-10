@@ -146,3 +146,20 @@ def run_self_test(rag_chain):
         print(f"Q{i}: {q}")
         ans = rag_chain.invoke(q)
         print(f"A{i}: {ans.content}\n")
+
+# main
+def main():
+    if not os.path.exists(TEXT_PATH):
+        raise FileNotFoundError(f"speech.txt not found at {TEXT_PATH}")
+
+    chunks = load_and_split()
+    vectorstore = build_vectorstore(chunks)
+    rag_chain = build_rag_chain(vectorstore)
+
+    run_self_test(rag_chain)
+
+    interactive_cli(rag_chain)
+
+
+if __name__ == "__main__":
+    main()
