@@ -139,6 +139,9 @@ def run_self_test(rag_chain):
     sample_questions = [
         "What is the central theme of this speech?",
         "What does Ambedkar say about caste?",
+        "Ambedkar states that the creation of castes in India means 'the superposition of endogamy'on which pre-existing, contrary social rule that was a 'creed' for the people of India?",
+        "In the context of maintaining caste endogamy, what fundamental problem does the creation of a 'surplus woman' (widow) and a 'surplus man' (widower) primarily create for the group?",
+        "After reviewing and critiquing the definitions of various scholars, what does Dr. Ambedkar conclude is the one and only characteristic that is peculiar to caste?",
     ]
 
     print("\n Self-test: 5 sample questions ---\n")
