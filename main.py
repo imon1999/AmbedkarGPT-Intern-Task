@@ -115,3 +115,20 @@ def format_docs(docs) -> str:
     Join retrieved document chunks into a single context string.
     """
     return "\n\n".join(d.page_content for d in docs)
+
+
+
+# Simple CLI loop
+def interactive_cli(rag_chain):
+
+    while True:
+        q = input("You: ").strip()
+        if q.lower() in {"exit", "quit"}:
+            print("Goodbye!")
+            break
+
+        if not q:
+            continue
+
+        answer = rag_chain.invoke(q)
+        print("\nAmbedkarGPT:", answer.content, "\n")
