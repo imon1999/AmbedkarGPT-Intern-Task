@@ -75,3 +75,18 @@ def build_rag_chain(vectorstore):
         search_type="similarity",
         search_kwargs={"k": 4},
     )
+
+    template = """
+You are AmbedkarGPT, a Q&A assistant. Use ONLY the information in the provided 
+context to answer the user's question. 
+If the answer is not in the context, say clearly:
+"I cannot answer this from the provided speech."
+
+Context:
+{context}
+
+Question:
+{question}
+
+Answer in concise English.
+"""
