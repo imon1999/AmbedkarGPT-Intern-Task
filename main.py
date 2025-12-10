@@ -18,3 +18,19 @@ CHROMA_DIR = os.path.join(BASE_DIR, "chroma_db")
 
 EMBEDDING_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 OLLAMA_MODEL_NAME = "mistral"
+
+#Load text
+def load_and_split() -> List:
+    """
+    Load speech.txt and split into semantic chunks.
+    """
+    loader = TextLoader(TEXT_PATH, encoding="utf-8")
+    documents = loader.load()
+
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=800,
+        chunk_overlap=200,
+        separators=["\n\n", "\n", ".", "!", "?", " "]
+    )
+    chunks = splitter.split_documents(documents)
+    return chunks
