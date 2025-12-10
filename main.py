@@ -34,3 +34,14 @@ def load_and_split() -> List:
     )
     chunks = splitter.split_documents(documents)
     return chunks
+
+# Load embedding
+def build_vectorstore(chunks):
+    """
+    Create a Chroma vectorstore backed by HuggingFace embeddings.
+    """
+    os.makedirs(CHROMA_DIR, exist_ok=True)
+
+    embeddings = HuggingFaceEmbeddings(
+        model_name=EMBEDDING_MODEL_NAME
+    )
