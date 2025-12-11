@@ -67,12 +67,12 @@ python main.py
 
 ```
 AmbedkarGPT-Intern-Task/
-├── main.py              # Main application
-├── requirements.txt     # Python dependencies
-├── README.md           # This file
-├── speech.txt          # B.R. Ambedkar's speech
-├── chroma_db/          # Vector database (auto-created)
-└── .gitignore          # Git ignore file
+├── main.py            
+├── requirements.txt     
+├── README.md           
+├── speech.txt          
+├── chroma_db/          
+└── .gitignore          
 ```
 
 ## Technical Details
